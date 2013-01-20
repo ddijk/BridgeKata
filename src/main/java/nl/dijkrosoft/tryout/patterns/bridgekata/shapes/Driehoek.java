@@ -17,7 +17,7 @@ public class Driehoek implements Shape{
 
   List<Point> points = new ArrayList<Point>();
 
-  Driehoek(PointImpl x, PointImpl y, PointImpl z) {
+  public Driehoek(PointImpl x, PointImpl y, PointImpl z) {
     points.add(x);
     points.add(y);
     points.add(z);

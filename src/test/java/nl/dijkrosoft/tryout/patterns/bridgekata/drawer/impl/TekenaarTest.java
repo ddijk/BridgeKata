@@ -10,6 +10,7 @@ import nl.dijkrosoft.tryout.patterns.bridgekata.model.Canvas;
 import nl.dijkrosoft.tryout.patterns.bridgekata.model.Line;
 import nl.dijkrosoft.tryout.patterns.bridgekata.model.Point;
 import nl.dijkrosoft.tryout.patterns.bridgekata.model.Shape;
+import nl.dijkrosoft.tryout.patterns.bridgekata.shapes.Driehoek;
 import nl.dijkrosoft.tryout.patterns.bridgekata.shapes.PointImpl;
 import nl.dijkrosoft.tryout.patterns.bridgekata.shapes.Vierkant;
 import org.junit.Test;
@@ -57,6 +58,25 @@ public class TekenaarTest {
 
   @Test
   public void drawDriehoek() {
+    final PointImpl punt1 = new PointImpl(1,2);
+    final PointImpl punt2 = new PointImpl(3,3);
+    final PointImpl punt3 = new PointImpl(4,4);
     
+    Shape driehoek = new Driehoek(punt1, punt2, punt3);
+
+    Canvas c  = new Paper();
+    Tekenaar t = new Tekenaar();
+    t.draw(driehoek,c);
+
+    Line zijde1 = new LineImpl(punt1, punt2);
+    Line zijde2 = new LineImpl(punt3, punt2);
+    Line zijde3 = new LineImpl(punt1, punt3);
+
+    List<Line> canvasLines = c.getLines();
+    assertEquals( 3, canvasLines.size());
+
+    assertTrue(canvasLines.contains(zijde1));
+    assertTrue(canvasLines.contains(zijde2));
+    assertTrue(canvasLines.contains(zijde3));
   }
 }
